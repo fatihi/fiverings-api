@@ -1,6 +1,7 @@
 package com.fiveringsdb.fiveringsdbapi.card
 
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -8,8 +9,9 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/cards")
 class CardsController(private val cardsRepository: CardsRepository) {
     @GetMapping
-    fun getCards(): List<Card> =
-        listOf(Card(id = "way-of-the-phoenix",
+    fun getCards(): List<Card> {
+        cardsRepository.findAll()
+        return listOf(Card(id = "way-of-the-phoenix",
                 name = "Way of the Phoenix",
                 type = CardType.Event,
                 clan = Clan.Phoenix,
@@ -36,7 +38,14 @@ class CardsController(private val cardsRepository: CardsRepository) {
                 roleRestriction = null,
                 strength = null,
                 strengthBonus = null))
-        //cardsRepository.findAll()
+    }
 
-}
+    @GetMapping("/{id}")
+    fun getCardById(@PathVariable("id") id: String) : Card {
+        val card = cardsRepository.findById(id)
+        if (card.isEmpty) {
+            throw NoSuchElementException("Could not find a card with id $id")
+        }
+        return card.get()
+    }}
 

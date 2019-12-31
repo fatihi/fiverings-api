@@ -1,4 +1,4 @@
-[ {
+{
   "allowed_clans" : [ "phoenix" ],
   "clan" : "phoenix",
   "cost" : "0",
@@ -14,4 +14,4 @@
   "traits" : [ "philosophy" ],
   "type" : "event",
   "unicity" : false
-} ]
+}
