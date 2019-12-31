@@ -14,7 +14,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     override fun configure(http: HttpSecurity) {
         http
             .authorizeRequests()
-                .antMatchers("/cards").permitAll()
+                .antMatchers("/cards", "/rulings").permitAll()
             .and()
                 .formLogin()
                 .loginPage("/login").failureUrl("/login-error")

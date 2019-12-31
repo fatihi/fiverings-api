@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import javax.persistence.*
 
 @Entity
-class Card(
+data class Card(
         @Id var id: String,
         var name: String,
         @JsonProperty("name_extra") var nameExtra: String?,

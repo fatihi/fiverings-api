@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue
 
 
 
+fun allClans(): List<Clan> = listOf(Clan.Crab, Clan.Crane, Clan.Dragon, Clan.Lion, Clan.Scorpion, Clan.Phoenix, Clan.Unicorn)
+
 enum class Restriction {
     Seeker,
     Keeper,
@@ -59,6 +61,7 @@ enum class Clan {
     fun forJackson(): String {
         return name.toLowerCase()
     }
+
 }
 
 enum class CardType {

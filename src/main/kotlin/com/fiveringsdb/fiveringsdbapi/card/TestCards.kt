@@ -9,4 +9,12 @@ object TestCards {
         element = null, fate = null, glory = null, honor = null, influenceCost = null, influencePool = null,
         military = null, militaryBonus = null, political = null, politicalBonus = null, roleRestriction = null,
         strength = null, strengthBonus = null)
+
+  fun AdmitDefeat(): Card = Card(id = "admit-defeat", name = "Admit Defeat", type = CardType.Event,
+          clan = Clan.Crane, isUnique = false, side = Side.Conflict, traits = listOf(),
+          deckLimit = 3, isRestricted = false, allowedClans = allClans(), isBanned = false,
+          nameExtra = null, cost = "1", text = "<b>Action:</b> Choose a character that is defending alone – bow that character.",
+          element = null, fate = null, glory = null, honor = null, influenceCost = 2, influencePool = null,
+          military = null, militaryBonus = null, political = null, politicalBonus = null, roleRestriction = null,
+          strength = null, strengthBonus = null)
 }
