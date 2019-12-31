@@ -15,7 +15,7 @@ class CardsController(private val cardsRepository: CardsRepository) {
                 clan = Clan.Phoenix,
                 isUnique = false,
                 side = Side.Conflict,
-                traits = listOf(),
+                traits = listOf("philosophy"),
                 deckLimit = 3,
                 isRestricted = false,
                 allowedClans = listOf(Clan.Phoenix),

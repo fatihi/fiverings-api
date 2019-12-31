@@ -1,5 +1,9 @@
 package com.fiveringsdb.fiveringsdbapi.card
 
+import com.fasterxml.jackson.annotation.JsonValue
+
+
+
 enum class Restriction {
     Seeker,
     Keeper,
@@ -7,7 +11,12 @@ enum class Restriction {
     Earth,
     Fire,
     Void,
-    Water
+    Water;
+
+    @JsonValue
+    fun forJackson(): String {
+        return name.toLowerCase()
+    }
 }
 
 enum class Side {
@@ -15,7 +24,12 @@ enum class Side {
     Dynasty,
     Role,
     Province,
-    Treaty
+    Treaty;
+
+    @JsonValue
+    fun forJackson(): String {
+        return name.toLowerCase()
+    }
 }
 
 enum class Element {
@@ -23,7 +37,12 @@ enum class Element {
     Earth,
     Fire,
     Void,
-    Water
+    Water;
+
+    @JsonValue
+    fun forJackson(): String {
+        return name.toLowerCase()
+    }
 }
 
 enum class Clan {
@@ -34,7 +53,12 @@ enum class Clan {
     Scorpion,
     Phoenix,
     Unicorn,
-    Neutral
+    Neutral;
+
+    @JsonValue
+    fun forJackson(): String {
+        return name.toLowerCase()
+    }
 }
 
 enum class CardType {
@@ -45,5 +69,10 @@ enum class CardType {
     Role,
     Province,
     Treaty,
-    Holding
+    Holding;
+
+    @JsonValue
+    fun forJackson(): String {
+        return name.toLowerCase()
+    }
 }
