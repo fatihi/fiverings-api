@@ -2,9 +2,8 @@ package com.fiveringsdb.fiveringsdbapi.card
 
 import com.fasterxml.jackson.annotation.JsonValue
 
-
-
 fun allClans(): List<Clan> = listOf(Clan.Crab, Clan.Crane, Clan.Dragon, Clan.Lion, Clan.Scorpion, Clan.Phoenix, Clan.Unicorn)
+fun allElements(): List<Element> = listOf(Element.Air, Element.Earth, Element.Fire, Element.Void, Element.Water)
 
 enum class Restriction {
     Seeker,
