@@ -42,10 +42,8 @@ class CardsController(private val cardsRepository: CardsRepository) {
 
     @GetMapping("/{id}")
     fun getCardById(@PathVariable("id") id: String) : Card {
-        val card = cardsRepository.findById(id)
-        if (card.isEmpty) {
-            throw NoSuchElementException("Could not find a card with id $id")
-        }
-        return card.get()
+        return cardsRepository.findById(id)
+                .orElseThrow { NoSuchElementException("Could not find a card with id $id") }
+
     }}
 
