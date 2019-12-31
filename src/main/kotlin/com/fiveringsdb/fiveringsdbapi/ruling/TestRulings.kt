@@ -1,6 +1,5 @@
 package com.fiveringsdb.fiveringsdbapi.ruling
 
-import com.fiveringsdb.fiveringsdbapi.card.Card
 import com.fiveringsdb.fiveringsdbapi.card.TestCards
 
 object TestRulings {

@@ -1,4 +1,4 @@
-package com.fiveringsdb.fiveringsdbapi.card
+package com.fiveringsdb.fiveringsdbapi.cycle
 
 import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
@@ -14,39 +14,39 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class CardSerializationTest {
+class CyclesSerializationTest {
+
+    val expected = object {}.javaClass.getResource("/cycle/imperial-cycle.json").readText(Charsets.UTF_8)
 
     @Autowired
     lateinit var springMvc: MockMvc
 
     @MockkBean
-    lateinit var controllerMock: CardsController
+    lateinit var controllerMock: CyclesController
 
     @Test
-    fun `serializes an array of cards correctly`() {
-        every { controllerMock.getCards() } returns listOf(TestCards.WayOfThePhoenix())
+    fun `serializes an array of cycles correctly`() {
+        every { controllerMock.getCycles() } returns listOf(TestCycles.ImperialCycle())
 
-        val result = springMvc.perform(MockMvcRequestBuilders.get("/cards"))
+        val result = springMvc.perform(MockMvcRequestBuilders.get("/cycles"))
                                 .andExpect(status().isOk)
                                 .andReturn().response.contentAsString
 
-        val expected = object {}.javaClass.getResource("/card/way-of-the-phoenix.json").readText(Charsets.UTF_8)
         assertEquals(result, "[ $expected ]")
 
-        verify { controllerMock.getCards() }
+        verify { controllerMock.getCycles() }
     }
 
     @Test
-    fun `serializes a single card correctly`() {
-        every { controllerMock.getCardById(any()) } returns TestCards.WayOfThePhoenix()
+    fun `serializes a single cycle correctly`() {
+        every { controllerMock.getCycleById(any()) } returns TestCycles.ImperialCycle()
 
-        val result = springMvc.perform(MockMvcRequestBuilders.get("/cards/way-of-the-phoenix"))
+        val result = springMvc.perform(MockMvcRequestBuilders.get("/cycles/imperial"))
                 .andExpect(status().isOk)
                 .andReturn().response.contentAsString
 
-        val expected = object {}.javaClass.getResource("/card/way-of-the-phoenix.json").readText(Charsets.UTF_8)
         assertEquals(result, expected)
 
-        verify { controllerMock.getCardById("way-of-the-phoenix") }
+        verify { controllerMock.getCycleById("imperial") }
     }
 }
