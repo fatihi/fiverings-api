@@ -1,5 +1,6 @@
 package com.fiveringsdb.fiveringsdbapi.card
 
+import com.fiveringsdb.fiveringsdbapi.packcard.TestPackCards
 import com.fiveringsdb.fiveringsdbapi.ruling.Ruling
 import com.fiveringsdb.fiveringsdbapi.ruling.RulingsController
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +15,9 @@ class CardsController(private val cardsRepository: CardsRepository,
     @GetMapping
     fun getCards(): List<Card> {
         cardsRepository.findAll()
-        return listOf(TestCards.WayOfThePhoenix(), TestCards.AdmitDefeat())
+        val wayOfThePhoenix = TestCards.WayOfThePhoenix()
+        val admitDefeat = TestCards.AdmitDefeat()
+        return listOf(wayOfThePhoenix, admitDefeat)
     }
 
     @GetMapping("/{id}")

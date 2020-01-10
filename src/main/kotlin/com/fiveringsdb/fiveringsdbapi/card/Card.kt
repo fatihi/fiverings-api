@@ -41,5 +41,10 @@ data class Card(
         @Enumerated(EnumType.STRING)
         var allowedClans: MutableList<Clan>,
         var isBanned: Boolean,
-        @OneToMany(mappedBy = "card")
-        var packCards: MutableList<PackCard>)
+        @OneToMany(mappedBy = "card",
+                cascade = [CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE],
+                targetEntity = PackCard::class,
+                orphanRemoval = true,
+                fetch = FetchType.EAGER)
+        var packCards: MutableList<PackCard> = mutableListOf()
+)

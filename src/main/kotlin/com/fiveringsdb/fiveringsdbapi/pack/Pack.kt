@@ -2,11 +2,10 @@ package com.fiveringsdb.fiveringsdbapi.pack
 import com.fasterxml.jackson.annotation.*
 import com.fiveringsdb.fiveringsdbapi.card.Card
 import com.fiveringsdb.fiveringsdbapi.cycle.Cycle
+import com.fiveringsdb.fiveringsdbapi.packcard.PackCard
 import java.time.LocalDate
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.ManyToOne
+import javax.persistence.*
 
 @Entity
 data class Pack(
@@ -20,4 +19,11 @@ data class Pack(
         @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
         @JsonIdentityReference(alwaysAsId=true)
         @JsonProperty("cycle_id")
-        val cycle: Cycle)
+        val cycle: Cycle,
+        @OneToMany(mappedBy = "pack",
+                cascade = [CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE],
+                targetEntity = PackCard::class,
+                orphanRemoval = true,
+                fetch = FetchType.EAGER)
+        val packCards: MutableList<PackCard> = mutableListOf()
+)
