@@ -2,6 +2,7 @@
   "cycle_id" : "core",
   "id" : "core",
   "name" : "Core Set",
+  "pack_cards" : [ ],
   "position" : 1,
   "released_at" : "2017-10-05",
   "size" : 350
