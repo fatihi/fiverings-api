@@ -8,6 +8,7 @@
   "is_restricted" : false,
   "name" : "Way of the Phoenix",
   "name_canonical" : "way of the phoenix",
+  "pack_cards" : [ ],
   "side" : "conflict",
   "text" : "<b>Action:</b> Choose a ring and an opponent - that player cannot declare conflicts of that ring's element this phase. (Max 1 per phase.)",
   "text_canonical" : "action: choose a ring and an opponent - that player cannot declare conflicts of that ring's element this phase. (max 1 per phase.)",

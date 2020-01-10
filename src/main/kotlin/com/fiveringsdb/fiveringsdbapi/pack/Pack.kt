@@ -10,7 +10,8 @@ import javax.persistence.ManyToOne
 
 @Entity
 data class Pack(
-        @Id val id: String,
+        @Id
+        val id: String,
         val name: String,
         val position: Int,
         val size: Int,
@@ -18,4 +19,5 @@ data class Pack(
         @ManyToOne
         @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
         @JsonIdentityReference(alwaysAsId=true)
-        @JsonProperty("cycle_id") val cycle: Cycle)
+        @JsonProperty("cycle_id")
+        val cycle: Cycle)

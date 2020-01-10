@@ -5,7 +5,8 @@ import javax.persistence.Id
 
 @Entity
 data class Cycle(
-        @Id var id: String,
+        @Id
+        var id: String,
         var name: String,
         var position: Int,
         var size: Int)

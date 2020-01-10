@@ -1,11 +1,13 @@
 package com.fiveringsdb.fiveringsdbapi.card
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.fiveringsdb.fiveringsdbapi.packcard.PackCard
 import javax.persistence.*
 
 @Entity
 data class Card(
-        @Id var id: String,
+        @Id
+        var id: String,
         var name: String,
         var nameExtra: String?,
         var nameCanonical: String = name.toCanonical(),
@@ -14,10 +16,13 @@ data class Card(
         var textCanonical: String? = text?.toCanonical(),
         var type: CardType,
         var clan: Clan,
-        @ElementCollection var element: MutableList<Element>?,
-        @JsonProperty("unicity") var isUnique: Boolean,
+        @ElementCollection
+        var element: MutableList<Element>?,
+        @JsonProperty("unicity")
+        var isUnique: Boolean,
         var side: Side,
-        @ElementCollection var traits: MutableList<String>,
+        @ElementCollection
+        var traits: MutableList<String>,
         var military: String?,
         var political: String?,
         var strength: String?,
@@ -32,7 +37,9 @@ data class Card(
         var deckLimit: Int,
         var roleRestriction: Restriction?,
         var isRestricted: Boolean,
-        @ElementCollection @Enumerated(EnumType.STRING) var allowedClans: MutableList<Clan>,
-        var isBanned: Boolean)
-
-
+        @ElementCollection
+        @Enumerated(EnumType.STRING)
+        var allowedClans: MutableList<Clan>,
+        var isBanned: Boolean,
+        @OneToMany(mappedBy = "card")
+        var packCards: MutableList<PackCard>)

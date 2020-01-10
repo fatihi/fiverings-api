@@ -5,5 +5,6 @@ import javax.persistence.Id
 
 @Entity
 data class Label(
-        @Id val id: String,
+        @Id
+        val id: String,
         val value: String)
