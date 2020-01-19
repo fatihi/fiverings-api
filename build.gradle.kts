@@ -7,6 +7,7 @@ plugins {
     kotlin("plugin.spring") version "1.3.61"
     kotlin("plugin.jpa") version "1.3.61"
     kotlin("plugin.allopen") version "1.3.61"
+    id("org.jetbrains.kotlin.plugin.noarg") version "1.2.60"
 }
 
 group = "com.fiveringsdb"
