@@ -9,13 +9,13 @@ import javax.persistence.ManyToOne
 @Entity
 data class Ruling(
         @Id
-        val id: Int,
-        val link: String?,
-        val source: String?,
-        val text: String,
+        var id: Int,
+        var link: String?,
+        var source: String?,
+        var text: String,
         @ManyToOne
         @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
         @JsonIdentityReference(alwaysAsId=true)
         @JsonProperty("card_id") val card: Card,
         @JsonIgnore
-        val userId: String)
+        var userId: String)

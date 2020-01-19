@@ -10,20 +10,21 @@ import javax.persistence.*
 @Entity
 data class Pack(
         @Id
-        val id: String,
-        val name: String,
-        val position: Int,
-        val size: Int,
-        val releasedAt: LocalDate?,
+        var id: String,
+        var name: String,
+        var position: Int,
+        var size: Int,
+        var releasedAt: LocalDate?,
+        var ffgId: String,
         @ManyToOne
         @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator::class, property = "id")
         @JsonIdentityReference(alwaysAsId=true)
         @JsonProperty("cycle_id")
-        val cycle: Cycle,
+        var cycle: Cycle,
         @OneToMany(mappedBy = "pack",
                 cascade = [CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE],
                 targetEntity = PackCard::class,
                 orphanRemoval = true,
                 fetch = FetchType.EAGER)
-        val packCards: MutableList<PackCard> = mutableListOf()
+        var packCards: MutableList<PackCard> = mutableListOf()
 )

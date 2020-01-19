@@ -10,15 +10,15 @@ data class PackCard(
         @Id
         @ManyToOne(fetch = FetchType.LAZY, targetEntity = Pack::class)
         @JoinColumn(name="pack_id", referencedColumnName = "id", nullable = false)
-        val pack: Pack,
+        var pack: Pack,
         @Id
         @ManyToOne(fetch = FetchType.LAZY, targetEntity = Card::class)
         @JoinColumn(name="card_id", referencedColumnName = "id", nullable = false)
-        val card: Card,
-        val quantity: Int,
-        val position: String,
-        val illustrator: String?,
-        val flavor: String?,
-        val imageUrl: String?)
+        var card: Card,
+        var quantity: Int,
+        var position: String,
+        var illustrator: String?,
+        var flavor: String?,
+        var imageUrl: String?)
 
 data class PackCardId(val card: String, val pack: String) : Serializable
