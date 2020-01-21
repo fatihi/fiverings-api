@@ -13,15 +13,19 @@ data class Card(
         @Transient
         var nameCanonical: String = name.toCanonical(),
         var cost: String?,
+        @Column( length = 10000 )
         var text: String?,
         @Transient
         var textCanonical: String? = text?.toCanonical(),
+        @Enumerated(EnumType.STRING)
         var type: CardType,
+        @Enumerated(EnumType.STRING)
         var clan: Clan,
         @ElementCollection
         var element: MutableList<Element>?,
         @JsonProperty("unicity")
         var isUnique: Boolean,
+        @Enumerated(EnumType.STRING)
         var side: Side,
         @ElementCollection
         var traits: MutableList<String>,
@@ -37,6 +41,7 @@ data class Card(
         var influencePool: Int?,
         var influenceCost: Int?,
         var deckLimit: Int,
+        @Enumerated(EnumType.STRING)
         var roleRestriction: Restriction?,
         var isRestricted: Boolean,
         @ElementCollection
