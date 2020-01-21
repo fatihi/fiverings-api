@@ -10,9 +10,11 @@ data class Card(
         var id: String,
         var name: String,
         var nameExtra: String?,
+        @Transient
         var nameCanonical: String = name.toCanonical(),
         var cost: String?,
         var text: String?,
+        @Transient
         var textCanonical: String? = text?.toCanonical(),
         var type: CardType,
         var clan: Clan,
